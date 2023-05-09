@@ -2,6 +2,7 @@ const pg = require("pg");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const cors = require("cors");
 const PORT = 5000;
 
 // buat konfigurasi koneksi
@@ -30,6 +31,7 @@ const koneksi = new pg.Pool({
 });
 
 // set body parser
+app.use(cors({ credentials: true, origin: "http://localhost:54318" }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
